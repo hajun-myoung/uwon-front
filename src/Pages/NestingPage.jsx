@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import SimpleBottomNavigation from "../Components/BottomNavigation";
+import Drawer_left from "../Components/Drawer_left";
 
 function MyButton() {
   return <button>I'm a button</button>;
@@ -7,6 +8,7 @@ function MyButton() {
 
 export default function NestingPage() {
   return (
+    <>
     <Box id="wrapper">
       <MyButton />
       <Box>
@@ -26,6 +28,12 @@ export default function NestingPage() {
         <SimpleBottomNavigation selected={"nesting"} />
       </Box>
     </Box>
+    <Box id="wrapper">
+      <Box sx={styles.left}>
+        <Drawer_left selected={"menu"} />
+      </Box>
+    </Box>
+    </>
   );
 }
 
