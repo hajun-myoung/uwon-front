@@ -30,7 +30,14 @@ export default function SparklistPage() {
   }, [postList]);
 
   return (
-    <>
+    <Box
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        paddingTop: 8,
+        overflow: "scroll",
+      }}
+    >
       <Box id="wrapper">
         <Box sx={styles.bottom}>
           <SimpleBottomNavigation selected={"sparklist"} />
@@ -49,7 +56,7 @@ export default function SparklistPage() {
           <Drawer_left selected={"menu"} />
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 

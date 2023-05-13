@@ -79,7 +79,7 @@ function Drawer_left() {
           sx={{
             "& > :not(style)": { m: 1 },
             display: "flex",
-            position: "absolute",
+            position: "fixed",
             bottom: "30px", // 가로로 가운데 정렬
 
             left: "50%",

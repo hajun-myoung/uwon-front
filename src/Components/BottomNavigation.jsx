@@ -4,10 +4,10 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useNavigate } from "react-router-dom";
 
-import GroupIcon from '@mui/icons-material/Group';
-import MessageIcon from '@mui/icons-material/Message';
-import HandshakeIcon from '@mui/icons-material/Handshake';
-import LocationOnIcon from '@mui/icons-material/LocationOn'
+import GroupIcon from "@mui/icons-material/Group";
+import MessageIcon from "@mui/icons-material/Message";
+import HandshakeIcon from "@mui/icons-material/Handshake";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HomeIcon from "@mui/icons-material/Home";
 import HtmlIcon from "@mui/icons-material/Html";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
@@ -18,7 +18,13 @@ export default function SimpleBottomNavigation({ selected }) {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box
+      sx={{
+        width: "100%",
+        position: "fixed",
+        bottom: 0,
+      }}
+    >
       <BottomNavigation
         showLabels
         value={value}
@@ -27,10 +33,19 @@ export default function SimpleBottomNavigation({ selected }) {
           navigate("/" + newValue);
         }}
       >
-        <BottomNavigationAction value="" label="메세지" icon={<MessageIcon />} />
-        <BottomNavigationAction value="html" label="맵" icon={<LocationOnIcon />} />
         <BottomNavigationAction
-          value="mui"
+          value=""
+          label="메세지"
+          icon={<MessageIcon />}
+        />
+        <BottomNavigationAction
+          value="html"
+          label="맵"
+          icon={<LocationOnIcon />}
+        />
+        <BottomNavigationAction value="" label="" icon={<></>} />
+        <BottomNavigationAction
+          value="sparklist"
           label="스파크"
           icon={<HandshakeIcon />}
         />
