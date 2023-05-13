@@ -21,6 +21,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import Orders_copy from './Orders copy'
 
 function Copyright(props) {
   return (
@@ -138,12 +139,18 @@ export default function Dashboard() {
               </Grid>
               
               {/* Recent Orders */}
-              <Grid item xs={12}>
+              <Grid item xs={7}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Orders />
                 </Paper>
               </Grid>
+              <Grid item xs={5}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column'}}>
+                  <Orders_copy />
+                </Paper>
+              </Grid>
             </Grid>
+            
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>

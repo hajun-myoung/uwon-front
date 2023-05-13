@@ -17,33 +17,25 @@ const rows = [
     0,
     '16 Mar, 2019',
     'Elvis Presley',
-    'Tupelo, MS',
-    'VISA ⠀•••• 3719',
     312.44,
   ),
   createData(
     1,
     '16 Mar, 2019',
     'Paul McCartney',
-    'London, UK',
-    'VISA ⠀•••• 2574',
     866.99,
   ),
-  createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
+  createData(2, '16 Mar, 2019', 'Tom Scholz', 100.81),
   createData(
     3,
-    '16 Mar, 2019',
+    '16 Mar, 2018',
     'Michael Jackson',
-    'Gary, IN',
-    'AMEX ⠀•••• 2000',
     654.39,
   ),
   createData(
     4,
     '15 Mar, 2019',
     'Bruce Springsteen',
-    'Long Branch, NJ',
-    'VISA ⠀•••• 5919',
     212.79,
   ),
 ];
@@ -52,17 +44,15 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Orders() {
+export default function Orders_copy() {
   return (
     <React.Fragment>
-      <Title>최근 전적</Title>
+      <Title>랭킹</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>결과</TableCell>
-            <TableCell>Vs</TableCell>
-            <TableCell>종목</TableCell>
-            <TableCell>날짜</TableCell>
+            <TableCell>등수</TableCell>
+            <TableCell>Username</TableCell>
             <TableCell align="right">레이팅</TableCell>
           </TableRow>
         </TableHead>
@@ -71,9 +61,7 @@ export default function Orders() {
             <TableRow key={row.id}>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
+              <TableCell align="right">{`${row.shipTo}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>
