@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+#header {
+  position: fixed;
+  top: 0;
+  /* width: 100% */
+  left: 0;
+
+  /* 생략 */
+}
+
+.container-padding {
+  width: 200px; /* 가로길이만 선언한다. 즉 height는 0인 셈이다 */
+}
+
+#map {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  /* 수평 중앙 정렬하기 */
+  margin: 0 auto;
+
+}
+
+.add_button {
+  position: fixed;
+  text-align: center
+}

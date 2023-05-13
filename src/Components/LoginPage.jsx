@@ -12,11 +12,30 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 
 const theme = createTheme();
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -38,6 +57,12 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -48,48 +73,21 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="SparkType"
-              label="대결 분야"
-              type="text"
-              name="SparkType"
+              id="Id"
+              label="Id"
+              name="Id"
+              autoComplete="Id"
+              autoFocus
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              name="SparkTitle"
-              label="대결 제목"
-              type="text"
-              id="SparkTitle"
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="SparkParty"
-              label="파티원"
-              type="text"
-              id="SparkParty"
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="SparkReward"
-              label="보상"
-              type="text"
-              id="SparkReward"              
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="SparkInfo"
-              label="상세 정보"
-              type="text"
-              id="SparkInfo"
-              multiline
-              rows={4}
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
             />
             <Button
               type="submit"
@@ -97,10 +95,19 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              대결 생성
+              Sign In
             </Button>
+            <Grid container>
+              <Grid item xs></Grid>
+              <Grid item>
+                <Button onClick={() => navigate("/signup")}><Link href="" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link></Button>
+              </Grid>
+            </Grid>
           </Box>
         </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

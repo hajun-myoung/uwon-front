@@ -23,7 +23,7 @@ import {
   import { useState } from "react";
   import '../App.css';
   import AddIcon from '@mui/icons-material/Add';
-
+  import { useNavigate } from "react-router-dom";
   
   const data = [
     {
@@ -39,7 +39,7 @@ import {
   
 function Drawer_left() {
     const [open, setOpen] = useState(false);
-  
+    const navigate = useNavigate();
     const getList = () => (
       <div style={{ width: 250 }} onClick={() => setOpen(false)}>
         {data.map((item, index) => (
@@ -67,9 +67,11 @@ function Drawer_left() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            야나와!
           </Typography>
-          <Button color="inherit">Login</Button>
+          <img style={{position: 'fixed', right: '47.5%', width:60, height:60}}src="img/Uwon_logo.png" />
+          <Button onClick={() => navigate("/signup")} color="inherit">Sign Up</Button>
+          <Button onClick={() => navigate("/signin")} color="inherit">Sign In</Button>
         </Toolbar>
       </AppBar>
       <Box sx={{ '& > :not(style)': { m: 1 }, 
@@ -78,7 +80,7 @@ function Drawer_left() {
     bottom: "30px", // 가로로 가운데 정렬
     right:"47.5%"
     }}>
-      <Fab sx={{
+      <Fab onClick={() => navigate("/sparkcreate")} sx={{
   }} color="primary" aria-label="add">
         <AddIcon />
       </Fab></Box>
