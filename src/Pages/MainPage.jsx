@@ -6,17 +6,27 @@ import Drawer_left from "../Components/Drawer_left";
 
 export default function MainPage() {
   return (
-    <><iframe src="https://service.dongledongle.com/juminsung10" frameborder="0" width="100%" height="500"></iframe>
-    <Box id="wrapper">
-      <Box sx={styles.bottom}>
-        <SimpleBottomNavigation selected={""} />
+    <>
+      <Box sx={{ width: "100vw", height: "100vh" }}>
+        <iframe
+          src="https://service.dongledongle.com/juminsung10"
+          frameborder="0"
+          width="100%"
+          height="90%"
+          title="mapApi"
+        />
       </Box>
-    </Box>
-    <Box id="wrapper">
-      <Box sx={styles.left}>
-        <Drawer_left selected={"menu"} />
+      <Box id="wrapper">
+        <Box sx={styles.bottom}>
+          <SimpleBottomNavigation selected={""} />
+        </Box>
       </Box>
-    </Box></>
+      <Box id="wrapper">
+        <Box sx={styles.left}>
+          <Drawer_left selected={"menu"} />
+        </Box>
+      </Box>
+    </>
   );
 }
 
