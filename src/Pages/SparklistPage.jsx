@@ -9,7 +9,26 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function MuiPage() {
+import * as API from "../api.js";
+
+import { useEffect, useState, useCallback } from "react";
+
+export default function SparklistPage() {
+  const [postList, setPostList] = useState([]);
+
+  const getPost = async () => {
+    const res = await API.get("spark");
+    setPostList(res?.data);
+  };
+
+  useEffect(() => {
+    getPost();
+  }, []);
+
+  useEffect(() => {
+    console.log(postList);
+  }, [postList]);
+
   return (
     <>
       <Box id="wrapper">
@@ -17,9 +36,14 @@ export default function MuiPage() {
           <SimpleBottomNavigation selected={"mui"} />
         </Box>
       </Box>
-      <BasicCard />
-      <BasicCard />
-      <BasicCard />
+      {postList?.map((post) => (
+        <BasicCard
+          title={post.title}
+          summarize={post.summarize}
+          capacity={post.capacity}
+          prize={post.prize}
+        />
+      ))}
       <Box id="wrapper">
         <Box sx={styles.left}>
           <Drawer_left selected={"menu"} />
