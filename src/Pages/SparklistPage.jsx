@@ -1,26 +1,55 @@
 import { Box } from "@mui/material";
 import SimpleBottomNavigation from "../Components/BottomNavigation";
+import Drawer_left from "../Components/Drawer_left";
+import ComboBox from "../Components/ComboBox";
+import BasicCard from "../Components/BasicCard";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import * as API from "../api.js";
 
-export default function ComboBox() {
+import { useEffect, useState, useCallback } from "react";
+
+export default function SparklistPage() {
+  const [postList, setPostList] = useState([]);
+
+  const getPost = async () => {
+    const res = await API.get("spark");
+    setPostList(res?.data);
+  };
+
+  useEffect(() => {
+    getPost();
+  }, []);
+
+  useEffect(() => {
+    console.log(postList);
+  }, [postList]);
+
   return (
     <>
-    <div>대결 List</div>
-    <Autocomplete
-    disablePortal
-    id="combo-box-demo"
-    options={top100Films}
-    sx={{ width: 300 }}
-    renderInput={(params) => <TextField {...params} label="Movie" />}
-  />
-  
-  <Box id="wrapper" sx={styles.bottom}>
-    <SimpleBottomNavigation selected={""} />
-  </Box></>
-    
+      <Box id="wrapper">
+        <Box sx={styles.bottom}>
+          <SimpleBottomNavigation selected={"mui"} />
+        </Box>
+      </Box>
+      {postList?.map((post) => (
+        <BasicCard
+          title={post.title}
+          summarize={post.summarize}
+          capacity={post.capacity}
+          prize={post.prize}
+        />
+      ))}
+      <Box id="wrapper">
+        <Box sx={styles.left}>
+          <Drawer_left selected={"menu"} />
+        </Box>
+      </Box>
+    </>
   );
 }
 
@@ -31,12 +60,3 @@ const styles = {
     width: "100%",
   },
 };
-
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = [
-  { label: '음식'},
-  { label: '스포츠'},
-  { label: '노래'},
-  { label: '게임'},
-  { label: '주먹'},
-];

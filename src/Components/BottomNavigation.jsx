@@ -14,7 +14,15 @@ export default function SimpleBottomNavigation({ selected }) {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box
+      sx={{
+        width: "100%",
+        borderWidth: 0,
+        borderTopWidth: 1,
+        borderColor: "#000",
+        borderStyle: "solid",
+      }}
+    >
       <BottomNavigation
         showLabels
         value={value}
@@ -25,6 +33,7 @@ export default function SimpleBottomNavigation({ selected }) {
       >
         <BottomNavigationAction value="" label="Home" icon={<HomeIcon />} />
         <BottomNavigationAction value="html" label="Html" icon={<HtmlIcon />} />
+        <BottomNavigationAction value="" label="" icon={<></>} />
         <BottomNavigationAction
           value="mui"
           label="Mui"
