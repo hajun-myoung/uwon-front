@@ -2,6 +2,7 @@ import { BottomNavigation } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import SimpleBottomNavigation from "../Components/BottomNavigation";
+import Drawer_left from "../Components/Drawer_left";
 
 export default function MainPage() {
   return (
@@ -9,6 +10,11 @@ export default function MainPage() {
     <Box id="wrapper">
       <Box sx={styles.bottom}>
         <SimpleBottomNavigation selected={""} />
+      </Box>
+    </Box>
+    <Box id="wrapper">
+      <Box sx={styles.left}>
+        <Drawer_left selected={"menu"} />
       </Box>
     </Box></>
   );

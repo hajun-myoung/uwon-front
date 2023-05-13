@@ -1,10 +1,11 @@
-import { Box } from "@mui/material";
+import { Box} from "@mui/material";
 import SimpleBottomNavigation from "../Components/BottomNavigation";
 import React, {useEffect} from "react";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import Drawer_left from "../Components/Drawer_left";
 
-const { kakao } = window;
+const { kakao } = window; 
 
 export default function HtmlPage() {
   
@@ -70,12 +71,18 @@ kakao.maps.event.addListener(marker, 'click', function() {
 });
   }, [])
   return (
-    <><div id="map" style={{width:'100%',height:'650px'}}></div>
+    <><Box sx={{p: 10}}><div id="map" className = "container-padding"style={{width:'80%',height:'600px'}}></div></Box>
     <Box id="wrapper">
       <Box sx={styles.bottom}>
         <SimpleBottomNavigation selected={"html"} />
       </Box>
     </Box>
+    <Box id="wrapper">
+      <Box sx={styles.left}>
+        <Drawer_left selected={"menu"} />
+      </Box>
+    </Box>
+    
     {/* <Stack spacing={2} direction="row"> 
       <Button variant="text">Text</Button>
       <Button variant="contained">Contained</Button>
