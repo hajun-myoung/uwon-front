@@ -3,11 +3,11 @@ import './App.css';
 import React, {useEffect} from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Drawer_left from './Components/Drawer';
+import Drawer_left from './Components/Drawer_left';
 import HtmlPage from './Pages/HtmlPage';
 import MainPage from './Pages/MainPage';
 import MuiPage from './Pages/MuiPage';
-import NestingPage from './Pages/NestingPage';
+import SparklistPage from './Pages/SparkDetail';
 
 const { kakao } = window;
 
@@ -21,7 +21,8 @@ function App() {
         <Route path="/" exact element={<MainPage />} />
         <Route path="/mui" exact element={<MuiPage />} />
         <Route path="/html" exact element={<HtmlPage />} />
-        <Route path="/nesting" exact element={<NestingPage />} />
+        <Route path="/nesting" exact element={<MuiPage />} />
+        <Route path="/SparklistPage" exact element={<SparklistPage />}/>
       </Routes>
     </Router>
     
