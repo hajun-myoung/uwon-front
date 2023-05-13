@@ -33,7 +33,7 @@ export default function SparklistPage() {
     <>
       <Box id="wrapper">
         <Box sx={styles.bottom}>
-          <SimpleBottomNavigation selected={"mui"} />
+          <SimpleBottomNavigation selected={"sparklist"} />
         </Box>
       </Box>
       {postList?.map((post) => (
