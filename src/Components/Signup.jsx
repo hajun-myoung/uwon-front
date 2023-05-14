@@ -13,48 +13,34 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import * as API from "../api.js";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import * as API from "../api.js";
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignUp() {
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    const Id = data.get("Id");
+    const username = data.get("UserName");
+    const id = data.get("Id");
     const password = data.get("password");
+    const passwordConfirm = data.get("passwordConfirm");
 
     try {
-      const res = await API.post("user/signin", { id: Id, password });
+      const res = await API.post("user/signup", {
+        name: username,
+        id,
+        password,
+        passwordConfirm,
+      });
       console.log(res);
     } catch (err) {
       const res = err.response;
-      console.log(res?.status, res?.data);
-      if (res?.status == 305 && res?.data === "incorrect id") {
-        alert("wrong id or pw ");
-      }
-      if (res?.status == 305 && res?.data === "incorrect pw")
-        alert("wrong id or pw ");
+      if (res?.status == 305 && res?.data == "duplicated ID")
+        alert("The ID has been registered. Please sign in");
     }
   };
 
@@ -74,55 +60,76 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign up
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
             noValidate
-            sx={{ mt: 1 }}
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="Id"
-              label="Id"
-              name="Id"
-              autoComplete="Id"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="UserName"
+                  label="UserName"
+                  name="UserName"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="Id"
+                  label="Id"
+                  name="Id"
+                  autoComplete="Id"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="passwordConfirm"
+                  label="Password Confirmation"
+                  type="password"
+                  id="passwordConfirm"
+                  autoComplete="new-password"
+                />
+              </Grid>
+            </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Sign Up
             </Button>
-            <Grid container>
-              <Grid item xs></Grid>
+            <Grid container justifyContent="flex-end">
               <Grid item>
-                <Button onClick={() => navigate("/signup")}>
+                <Button onClick={() => navigate("/signin")}>
                   <Link href="" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                    {"Already have an account? Sign in"}
                   </Link>
                 </Button>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

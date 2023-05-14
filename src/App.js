@@ -3,21 +3,15 @@ import './App.css';
 import React, {useEffect} from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Drawer_left from './Components/Drawer_left';
 import HtmlPage from './Pages/HtmlPage';
 import MainPage from './Pages/MainPage';
 import NestingPage from './Pages/NestingPage';
-import SignUp from './Components/Signin'
-import SignIn from './Components/LoginPage'
+import SignUp from './Components/Signup'
+import SignIn from './Components/Signin'
 import AddPage from './Pages/AddPage'
 import SparklistPage from './Pages/SparklistPage';
 
-const { kakao } = window;
-
 function App() {
-
- 
-
   return (  
     <Router>
       <Routes>
